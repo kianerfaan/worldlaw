@@ -66,6 +66,11 @@
             border-radius: 15px;
             cursor: pointer;
         }
+        #loading-indicator {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -82,54 +87,10 @@
         </div>
     </div>
 
-    <script>
-        const chatbox = document.getElementById('chatbox');
-        const userInput = document.getElementById('user-input');
-        const sendButton = document.getElementById('send-button');
-        const exampleQueries = document.querySelectorAll('.example-query');
-
-        function addMessage(message, isUser = false) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message');
-            messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
-            messageDiv.textContent = message;
-            chatbox.appendChild(messageDiv);
-            chatbox.scrollTop = chatbox.scrollHeight;
-        }
-
-        async function handleUserInput() {
-            const userMessage = userInput.value.trim();
-            if (userMessage) {
-                addMessage(userMessage, true);
-                userInput.value = '';
-                
-                // Simulate bot response (replace with actual RAG implementation)
-                const botResponse = await simulateBotResponse(userMessage);
-                addMessage(botResponse);
-            }
-        }
-
-        async function simulateBotResponse(userMessage) {
-            // This is where you'd integrate your actual RAG system
-            // For now, we'll just echo the user's message
-            await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate processing time
-            return `You asked: "${userMessage}". This is a placeholder response. Implement your RAG system here.`;
-        }
-
-        sendButton.addEventListener('click', handleUserInput);
-        userInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') handleUserInput();
-        });
-
-        exampleQueries.forEach(query => {
-            query.addEventListener('click', () => {
-                userInput.value = query.textContent;
-                handleUserInput();
-            });
-        });
-
-        // Initial bot message
-        addMessage("Welcome to WorldLaw.ai! How can I assist you with international law today?");
-    </script>
+    <!-- Include the marked library for markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <!-- Include your main application script -->
+    <script src="app.js"></script>
 </body>
 </html>
