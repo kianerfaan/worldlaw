@@ -1,7 +1,24 @@
-// 1. Set up the back-end API endpoint
+// API endpoint
 const API_ENDPOINT = 'https://api.worldlaw.ai/query';
 
-// 2. Modify the handleUserInput function
+// DOM element references
+const chatbox = document.getElementById('chatbox');
+const userInput = document.getElementById('user-input');
+const sendButton = document.getElementById('send-button');
+const exampleQueries = document.getElementById('example-queries');
+
+// Initialize the application
+function init() {
+    sendButton.addEventListener('click', handleUserInput);
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            handleUserInput();
+        }
+    });
+    exampleQueries.addEventListener('click', handleExampleQuery);
+}
+
+// Handle user input
 async function handleUserInput() {
     const userMessage = userInput.value.trim();
     if (userMessage) {
@@ -9,25 +26,25 @@ async function handleUserInput() {
         userInput.value = '';
         
         try {
-            // Show loading indicator
             showLoadingIndicator();
-            
-            // Call the RAG system
             const botResponse = await callRAGSystem(userMessage);
-            
-            // Hide loading indicator
             hideLoadingIndicator();
-            
-            // Display the response
             addMessage(botResponse);
         } catch (error) {
-            console.error('Error:', error);
-            addMessage('Sorry, there was an error processing your request. Please try again.');
+            handleError(error);
         }
     }
 }
 
-// 3. Implement the RAG system call
+// Handle example query clicks
+function handleExampleQuery(event) {
+    if (event.target.classList.contains('example-query')) {
+        userInput.value = event.target.textContent;
+        handleUserInput();
+    }
+}
+
+// Call the RAG system
 async function callRAGSystem(query) {
     const response = await fetch(API_ENDPOINT, {
         method: 'POST',
@@ -45,9 +62,18 @@ async function callRAGSystem(query) {
     return data.response;
 }
 
-// 4. Implement loading indicator functions
+// Add a message to the chatbox
+function addMessage(message, isUser = false) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message');
+    messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
+    messageDiv.innerHTML = isUser ? message : marked(message);
+    chatbox.appendChild(messageDiv);
+    chatbox.scrollTop = chatbox.scrollHeight;
+}
+
+// Show loading indicator
 function showLoadingIndicator() {
-    // Add a loading message or spinner to the chat
     const loadingDiv = document.createElement('div');
     loadingDiv.id = 'loading-indicator';
     loadingDiv.textContent = 'Thinking...';
@@ -55,33 +81,20 @@ function showLoadingIndicator() {
     chatbox.scrollTop = chatbox.scrollHeight;
 }
 
+// Hide loading indicator
 function hideLoadingIndicator() {
-    // Remove the loading indicator
     const loadingDiv = document.getElementById('loading-indicator');
     if (loadingDiv) {
         loadingDiv.remove();
     }
 }
 
-// 5. Error handling
+// Handle errors
 function handleError(error) {
     console.error('Error:', error);
     addMessage('An error occurred. Please try again later.');
+    hideLoadingIndicator();
 }
 
-// 6. Update the script section in your HTML
-// <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-// <script src="app.js"></script>
-
-// 7. In app.js, update the addMessage function to support markdown
-function addMessage(message, isUser = false) {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message');
-    messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
-    
-    // Use marked to render markdown
-    messageDiv.innerHTML = isUser ? message : marked(message);
-    
-    chatbox.appendChild(messageDiv);
-    chatbox.scrollTop = chatbox.scrollHeight;
-}
+// Initialize the application when the page loads
+document.addEventListener('DOMContentLoaded', init);
