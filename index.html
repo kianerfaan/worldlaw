@@ -3,31 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="WorldLaw - Your resource for international law and global current events">
-    <title>WorldLaw.ai</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>WorldLaw.ai - International Legal Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        #chatbox {
+            height: 300px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        #user-input {
+            width: 70%;
+            padding: 10px;
+            margin-right: 10px;
+        }
+        #send-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .message {
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .user-message {
+            background-color: #e6f2ff;
+            text-align: right;
+        }
+        .bot-message {
+            background-color: #f0f0f0;
+        }
+        #example-queries {
+            margin-top: 20px;
+        }
+        .example-query {
+            display: inline-block;
+            margin: 5px;
+            padding: 5px 10px;
+            background-color: #e9ecef;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>WorldLaw.ai - International Legal Assistant</h1>
+        <div id="chatbox"></div>
+        <input type="text" id="user-input" placeholder="Ask a question about international law...">
+        <button id="send-button">Send</button>
+        <div id="example-queries">
+            <h3>Example Queries:</h3>
+            <span class="example-query">What is international law?</span>
+            <span class="example-query">Explain the UN Charter</span>
+            <span class="example-query">How does the ICJ work?</span>
+        </div>
+    </div>
 
-    <header>
-        <h1>WorldLaw.ai</h1>
-        <p>Your resource for international law and global current events</p>
-    </header>
+    <script>
+        const chatbox = document.getElementById('chatbox');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+        const exampleQueries = document.querySelectorAll('.example-query');
 
-    <nav>
-        <a href="#about">About</a>
-        <a href="#articles">Articles</a>
-        <a href="#contact">Contact</a>
-    </nav>
+        function addMessage(message, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
+            messageDiv.textContent = message;
+            chatbox.appendChild(messageDiv);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
 
-    <section id="about">
-        <h2>About WorldLaw</h2>
-        <p>WorldLaw.ai is dedicated to providing insights and resources on international law, policy, and global events.</p>
-    </section>
+        async function handleUserInput() {
+            const userMessage = userInput.value.trim();
+            if (userMessage) {
+                addMessage(userMessage, true);
+                userInput.value = '';
+                
+                // Simulate bot response (replace with actual RAG implementation)
+                const botResponse = await simulateBotResponse(userMessage);
+                addMessage(botResponse);
+            }
+        }
 
-    <footer>
-        <p>&copy; 2024 WorldLaw.ai. All rights reserved.</p>
-    </footer>
+        async function simulateBotResponse(userMessage) {
+            // This is where you'd integrate your actual RAG system
+            // For now, we'll just echo the user's message
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate processing time
+            return `You asked: "${userMessage}". This is a placeholder response. Implement your RAG system here.`;
+        }
 
+        sendButton.addEventListener('click', handleUserInput);
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleUserInput();
+        });
+
+        exampleQueries.forEach(query => {
+            query.addEventListener('click', () => {
+                userInput.value = query.textContent;
+                handleUserInput();
+            });
+        });
+
+        // Initial bot message
+        addMessage("Welcome to WorldLaw.ai! How can I assist you with international law today?");
+    </script>
 </body>
 </html>
