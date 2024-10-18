@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WorldLaw.ai | Redefining International Legal Research</title>
     <style>
-        /* Reset styles */
+        /* Reset and basic styles */
         * {
             margin: 0;
             padding: 0;
@@ -17,54 +17,72 @@
             font-family: 'Arial', sans-serif;
             background-color: #f5f7fa;
             color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
         }
 
-        .container {
-            max-width: 900px;
-            padding: 50px;
-            background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        header {
+            background-color: #0056d2;
+            color: #fff;
+            padding: 20px 0;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        h1 {
-            font-size: 3rem;
-            color: #222;
-            margin-bottom: 10px;
-            font-weight: bold;
+        header h1 {
+            font-size: 2rem;
             letter-spacing: 1px;
         }
 
-        h2 {
-            font-size: 1.5rem;
-            color: #666;
-            margin-bottom: 30px;
+        nav {
+            margin-top: 10px;
         }
 
-        p {
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #d0dfff;
+        }
+
+        section {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        section p {
             font-size: 1.1rem;
-            margin-bottom: 20px;
             line-height: 1.8;
+            margin-bottom: 20px;
             color: #555;
         }
 
-        .cta {
-            margin-top: 40px;
-        }
-
         .cta a {
+            display: inline-block;
+            margin-top: 20px;
             text-decoration: none;
-            font-size: 1.2rem;
             color: #fff;
             background-color: #0056d2;
             padding: 12px 30px;
             border-radius: 25px;
+            font-size: 1rem;
             transition: background-color 0.3s;
         }
 
@@ -73,9 +91,11 @@
         }
 
         footer {
+            text-align: center;
             margin-top: 50px;
-            font-size: 0.9rem;
+            padding: 20px;
             color: #aaa;
+            font-size: 0.9rem;
         }
 
         footer a {
@@ -90,21 +110,50 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>WorldLaw.ai</h1>
-        <h2>Redefining International Legal Research</h2>
-        <p>We are building the future of international legal research with AI-powered tools that provide faster, smarter, 
-           and more efficient access to global legal information. Whether you're researching treaties, case law, or global 
-           regulations, WorldLaw.ai offers the most comprehensive and reliable solutions.</p>
-        
-        <div class="cta">
-            <a href="https://chat.worldlaw.ai">Learn More & Join the Beta</a>
-        </div>
 
-        <footer>
-            <p>Questions? <a href="mailto:info@worldlaw.ai">Contact Us</a></p>
-        </footer>
-    </div>
+    <header>
+        <h1>WorldLaw.ai</h1>
+        <nav>
+            <a href="#about">About Us</a>
+            <a href="#vision">Our Vision</a>
+            <a href="#products">Our Products</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>WorldLaw.ai is an international legal research startup. We aim to democratize access to international legal 
+           knowledge through advanced, AI-powered search tools that make complex legal information easy to navigate.</p>
+    </section>
+
+    <section id="vision">
+        <h2>Our Vision</h2>
+        <p>Our vision is to become the leading platform for international legal research, competing directly with 
+           established players like Jus Mundi. We believe that legal research should be accessible, fast, and reliable 
+           for professionals and institutions worldwide.</p>
+    </section>
+
+    <section id="products">
+        <h2>Our Products</h2>
+        <p><strong>WorldLaw Chat:</strong> An AI-powered legal assistant to help users with international law questions 
+           and research, launching soon at <a href="https://chat.worldlaw.ai">chat.worldlaw.ai</a>.</p>
+        <p><strong>Advanced Legal Search:</strong> A search tool designed for faster insights into treaties, case law, 
+           and regulations across the globe.</p>
+        <p class="cta">
+            <a href="https://chat.worldlaw.ai">Join the Beta</a>
+        </p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Have questions? Want to collaborate with us? Reach out at <a href="mailto:info@worldlaw.ai">info@worldlaw.ai</a>.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 WorldLaw.ai. All rights reserved. | <a href="#about">About Us</a> | <a href="#contact">Contact</a></p>
+    </footer>
+
 </body>
 
 </html>
