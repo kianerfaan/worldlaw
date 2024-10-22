@@ -7,19 +7,19 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f5f7fa;
-    color: #333;
+    background-color: #2B4257; /* Midnight Blue */
+    color: #E0E0E0; /* Light Gray for contrast */
 }
 
 header {
-    background-color: #0056d2;
+    background-color: #091235; /* Royal Blue */
     color: #fff;
     padding: 20px 0;
     text-align: center;
     position: sticky;
     top: 0;
     z-index: 10;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 header h1 {
@@ -32,7 +32,7 @@ nav {
 }
 
 nav a {
-    color: #fff;
+    color: #88A9C3; /* Blue Gray */
     margin: 0 15px;
     text-decoration: none;
     font-size: 1rem;
@@ -41,29 +41,29 @@ nav a {
 }
 
 nav a:hover {
-    color: #d0dfff;
+    color: #D0E0F0; /* Lighter Blue for hover effect */
 }
 
 section {
     max-width: 900px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #14202E; /* Navy Blue */
     border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
 section h2 {
     font-size: 1.8rem;
     margin-bottom: 15px;
-    color: #222;
+    color: #E0E0E0; /* Light Gray for readability */
 }
 
 section p {
     font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 20px;
-    color: #555;
+    color: #CFCFCF; /* Softer Gray for body text */
 }
 
 .cta a {
@@ -71,7 +71,7 @@ section p {
     margin-top: 20px;
     text-decoration: none;
     color: #fff;
-    background-color: #0056d2;
+    background-color: #091235; /* Royal Blue */
     padding: 12px 30px;
     border-radius: 25px;
     font-size: 1rem;
@@ -79,23 +79,22 @@ section p {
 }
 
 .cta a:hover {
-    background-color: #003c9e;
+    background-color: #2B4257; /* Midnight Blue */
 }
 
 footer {
     text-align: center;
     margin-top: 50px;
     padding: 20px;
-    color: #aaa;
+    color: #88A9C3; /* Blue Gray */
     font-size: 0.9rem;
 }
 
 footer a {
-    color: #0056d2;
+    color: #2B4257; /* Midnight Blue */
     text-decoration: none;
 }
 
 footer a:hover {
     text-decoration: underline;
 }
-
