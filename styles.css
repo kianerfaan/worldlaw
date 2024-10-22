@@ -86,15 +86,19 @@ footer {
     text-align: center;
     margin-top: 50px;
     padding: 20px;
-    color: #88A9C3; /* Blue Gray */
+    background-color: #14202E; /* Navy Blue */
+    color: #E0E0E0; /* Light Gray */
     font-size: 0.9rem;
+    border-top: 1px solid #88A9C3; /* Subtle border for separation */
 }
 
 footer a {
-    color: #2B4257; /* Midnight Blue */
+    color: #88A9C3; /* Blue Gray */
     text-decoration: none;
+    transition: color 0.3s;
 }
 
 footer a:hover {
+    color: #D0E0F0; /* Lighter Blue */
     text-decoration: underline;
 }
